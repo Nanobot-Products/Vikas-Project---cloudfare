@@ -1,0 +1,435 @@
+{
+  "user": {
+    "name": "Vikas Jeerawala",
+    "role": "Procurement & Vendor Lead",
+    "vertical": "Gifts, Awards & Merchandise",
+    "leads": [
+      {
+        "name": "Ashish Jain",
+        "role": "Gifts & Awards Lead (Primary Lead)"
+      },
+      {
+        "name": "Vikas Jeerawala",
+        "role": "Procurement & Vendor Lead (Co-Lead)"
+      },
+      {
+        "name": "Nitesh Mathur",
+        "role": "Branding & Communication (Co-Lead)"
+      }
+    ]
+  },
+  "deliverables": [
+    {
+      "id": "GM-01",
+      "name": "Gift strategy & budget",
+      "scope": "Define recipient categories, quantity, target price and quality level.",
+      "targetPhase": "By Sept 10",
+      "owner": "Ashish Jain / Vikas Jeerawala",
+      "evidence": "Approved gift matrix",
+      "status": "In Progress",
+      "notes": "Draft matrix created with 4 tiers (VIP, Speaker, Delegate, Volunteer). Budget capped at Rs 4,50,000."
+    },
+    {
+      "id": "GM-02",
+      "name": "VIP gift selection",
+      "scope": "Professional Jodhpur/Rajasthan-inspired gift with broad appeal.",
+      "targetPhase": "By Sept 20",
+      "owner": "Ashish Jain / Vikas Jeerawala",
+      "evidence": "Sample approved",
+      "status": "In Progress",
+      "notes": "Shortlisted 2 Rajasthani handcrafted brass/wood souvenir boxes with Blue Pottery accents. Sample arriving Sept 14."
+    },
+    {
+      "id": "GM-03",
+      "name": "Awards/prizes",
+      "scope": "Trophies, certificates, prize details and presentation sequence.",
+      "targetPhase": "By Sept 20",
+      "owner": "Ashish Jain",
+      "evidence": "Award inventory confirmed",
+      "status": "In Progress",
+      "notes": "15 category trophies (crystal/metal base) + 45 framed certificates finalized."
+    },
+    {
+      "id": "GM-04",
+      "name": "Merchandise range",
+      "scope": "Select approved TiE/Yugaantar merchandise and size/quantity mix.",
+      "targetPhase": "By Sept 20",
+      "owner": "Vikas Jeerawala / Nitesh Mathur",
+      "evidence": "SKU/quantity sheet",
+      "status": "In Progress",
+      "notes": "Polo T-shirts (Black/Navy), Cotton Tote Bags, Metal Stylus Pens, Hardcover Notebooks."
+    },
+    {
+      "id": "GM-05",
+      "name": "Vendor quotations",
+      "scope": "Minimum viable quotes, negotiated rates, GST and delivery terms.",
+      "targetPhase": "By Sept 30",
+      "owner": "Vikas Jeerawala",
+      "evidence": "Vendor selected",
+      "status": "In Progress",
+      "notes": "3 apparel vendors and 2 handicraft artisans contacted. Negotiating 12% bulk discount + 7-day safety buffer."
+    },
+    {
+      "id": "GM-06",
+      "name": "Artwork & branding",
+      "scope": "Print-ready artwork, logo placement, packaging and proof approval.",
+      "targetPhase": "By Oct 5",
+      "owner": "Nitesh Mathur",
+      "evidence": "Final proofs signed off",
+      "status": "Pending",
+      "notes": "Awaiting vector assets for Yugaantar & TiE combined lockup from branding team."
+    },
+    {
+      "id": "GM-07",
+      "name": "Production & QC",
+      "scope": "Order, inspect, count, photograph and store inventory.",
+      "targetPhase": "By Oct 20",
+      "owner": "Vikas Jeerawala",
+      "evidence": "Quantity/quality reconciliation",
+      "status": "Pending",
+      "notes": "QC inspection station planned at Venue Warehouse A."
+    },
+    {
+      "id": "GM-08",
+      "name": "Event-day distribution",
+      "scope": "Issue control for VIP gifts, awards and merchandise; record balance.",
+      "targetPhase": "Event days",
+      "owner": "Vikas Jeerawala / Vertical Team",
+      "evidence": "Distribution log complete",
+      "status": "Pending",
+      "notes": "Live check-in & dispatch desk using mobile dispatch logger."
+    }
+  ],
+  "inventory": [
+    {
+      "id": "SKU-VIP-01",
+      "name": "Jodhpur Royal Brass & Blue Pottery Gift Box",
+      "category": "VIP Gifts",
+      "targetPrice": 1800,
+      "unitCost": 1650,
+      "gstPercent": 12,
+      "orderedQty": 60,
+      "receivedQty": 60,
+      "qcPassedQty": 58,
+      "qcFailedQty": 2,
+      "dispatchedQty": 12,
+      "storageLocation": "Backstage Storage - Cupboard A1",
+      "minStockAlert": 10,
+      "vendorId": "VEND-01",
+      "hasSizes": false,
+      "description": "Handcrafted Jodhpur artisanal keepsake box with signature blue pottery tile inlay and roasted gourmet sweets assortment."
+    },
+    {
+      "id": "SKU-AWD-01",
+      "name": "Custom Crystal & Brass Pioneer Award Trophy",
+      "category": "Awards & Prizes",
+      "targetPrice": 2500,
+      "unitCost": 2200,
+      "gstPercent": 18,
+      "orderedQty": 15,
+      "receivedQty": 15,
+      "qcPassedQty": 15,
+      "qcFailedQty": 0,
+      "dispatchedQty": 0,
+      "storageLocation": "VIP Lounge Vault - Box 1",
+      "minStockAlert": 2,
+      "vendorId": "VEND-03",
+      "hasSizes": false,
+      "description": "Beveled optical crystal trophy with engraved TiE Yugaantar emblem and wooden mahogany base."
+    },
+    {
+      "id": "SKU-AWD-02",
+      "name": "Gold Embossed Winner Certificates with Leatherette Folder",
+      "category": "Awards & Prizes",
+      "targetPrice": 350,
+      "unitCost": 290,
+      "gstPercent": 18,
+      "orderedQty": 45,
+      "receivedQty": 45,
+      "qcPassedQty": 45,
+      "qcFailedQty": 0,
+      "dispatchedQty": 5,
+      "storageLocation": "VIP Lounge Vault - Box 2",
+      "minStockAlert": 5,
+      "vendorId": "VEND-04",
+      "hasSizes": false,
+      "description": "Heavy 300 GSM textured paper certificates with hot foil stamping and branded hardbound folder."
+    },
+    {
+      "id": "SKU-MRC-01",
+      "name": "TiE Yugaantar Premium Pique Cotton Polo T-Shirt",
+      "category": "Merchandise",
+      "targetPrice": 650,
+      "unitCost": 540,
+      "gstPercent": 5,
+      "orderedQty": 350,
+      "receivedQty": 350,
+      "qcPassedQty": 346,
+      "qcFailedQty": 4,
+      "dispatchedQty": 110,
+      "storageLocation": "Main Warehouse - Rack M1-M3",
+      "minStockAlert": 40,
+      "vendorId": "VEND-02",
+      "hasSizes": true,
+      "sizes": {
+        "XS": {
+          "ordered": 20,
+          "received": 20,
+          "passed": 20,
+          "dispatched": 4
+        },
+        "S": {
+          "ordered": 50,
+          "received": 50,
+          "passed": 50,
+          "dispatched": 18
+        },
+        "M": {
+          "ordered": 110,
+          "received": 110,
+          "passed": 108,
+          "dispatched": 38
+        },
+        "L": {
+          "ordered": 100,
+          "received": 100,
+          "passed": 99,
+          "dispatched": 32
+        },
+        "XL": {
+          "ordered": 50,
+          "received": 50,
+          "passed": 49,
+          "dispatched": 14
+        },
+        "2XL": {
+          "ordered": 20,
+          "received": 20,
+          "passed": 20,
+          "dispatched": 4
+        }
+      },
+      "description": "240 GSM breathable organic pique cotton polo with embroidered TiE & Yugaantar chest and sleeve emblems."
+    },
+    {
+      "id": "SKU-MRC-02",
+      "name": "Heavy Canvas Tote Bag with Jodhpur Geometric Print",
+      "category": "Merchandise",
+      "targetPrice": 280,
+      "unitCost": 220,
+      "gstPercent": 12,
+      "orderedQty": 500,
+      "receivedQty": 500,
+      "qcPassedQty": 495,
+      "qcFailedQty": 5,
+      "dispatchedQty": 210,
+      "storageLocation": "Main Warehouse - Rack B1-B2",
+      "minStockAlert": 50,
+      "vendorId": "VEND-02",
+      "hasSizes": false,
+      "description": "12 oz natural cotton duck canvas bag with reinforced inner pocket and screen printed artwork."
+    },
+    {
+      "id": "SKU-KIT-01",
+      "name": "Delegate Welcome Kit (Hardcover Notebook + Metal Pen + Badge)",
+      "category": "Delegate Kits",
+      "targetPrice": 450,
+      "unitCost": 380,
+      "gstPercent": 18,
+      "orderedQty": 400,
+      "receivedQty": 400,
+      "qcPassedQty": 400,
+      "qcFailedQty": 0,
+      "dispatchedQty": 185,
+      "storageLocation": "Registration Desk Area - Pallet 1",
+      "minStockAlert": 30,
+      "vendorId": "VEND-04",
+      "hasSizes": false,
+      "description": "A5 faux leather debossed journal, matte metal twist pen, satin lanyard and attendee NFC/QR badge kit."
+    }
+  ],
+  "vendors": [
+    {
+      "id": "VEND-01",
+      "name": "Marwar Craft & Heritage Emporium",
+      "contactPerson": "Rameshwar Gehlot",
+      "phone": "+91 98290 12345",
+      "email": "info@marwarcrafts.jodhpur.in",
+      "city": "Jodhpur, Rajasthan",
+      "gstin": "08AABCM5678P1Z3",
+      "categories": [
+        "VIP Gifts",
+        "Handicrafts"
+      ],
+      "paymentTerms": "30% Advance, 70% upon delivery & QC",
+      "deliveryBufferDays": 8,
+      "rating": 4.9
+    },
+    {
+      "id": "VEND-02",
+      "name": "ThreadCraft Apparel Innovations",
+      "contactPerson": "Sunil Verma",
+      "phone": "+91 98101 88765",
+      "email": "sunil@threadcraft.co.in",
+      "city": "Jaipur, Rajasthan",
+      "gstin": "08AABCT9988Q1Z5",
+      "categories": [
+        "Merchandise",
+        "Apparel",
+        "Tote Bags"
+      ],
+      "paymentTerms": "40% Advance, 60% on dispatch",
+      "deliveryBufferDays": 10,
+      "rating": 4.7
+    },
+    {
+      "id": "VEND-03",
+      "name": "Apex Memento & Crystals",
+      "contactPerson": "Gaurav Singhal",
+      "phone": "+91 97110 44321",
+      "email": "sales@apexmementos.com",
+      "city": "Delhi NCR",
+      "gstin": "07AABCA3322R1Z8",
+      "categories": [
+        "Awards & Prizes",
+        "Trophies"
+      ],
+      "paymentTerms": "50% Advance, 50% on receipt",
+      "deliveryBufferDays": 6,
+      "rating": 4.8
+    },
+    {
+      "id": "VEND-04",
+      "name": "PrintMatrix Fine Media",
+      "contactPerson": "Dharmendra Choudhary",
+      "phone": "+91 94141 55667",
+      "email": "orders@printmatrix.in",
+      "city": "Jodhpur / Ahmedabad",
+      "gstin": "08AABCP4411S1Z2",
+      "categories": [
+        "Certificates",
+        "Delegate Kits",
+        "Collaterals"
+      ],
+      "paymentTerms": "Net 15 days post delivery",
+      "deliveryBufferDays": 5,
+      "rating": 4.6
+    }
+  ],
+  "quotations": [
+    {
+      "id": "QUOTE-01",
+      "skuId": "SKU-VIP-01",
+      "skuName": "Jodhpur Royal Brass & Blue Pottery Gift Box",
+      "vendorId": "VEND-01",
+      "vendorName": "Marwar Craft & Heritage Emporium",
+      "unitRate": 1650,
+      "gstPercent": 12,
+      "qty": 60,
+      "sampleApproved": true,
+      "leadTimeDays": 14,
+      "bufferDays": 8,
+      "status": "Selected",
+      "notes": "Negotiated from initial Rs 1,850. Includes custom velvet inner box and packaging."
+    },
+    {
+      "id": "QUOTE-02",
+      "skuId": "SKU-VIP-01",
+      "skuName": "Jodhpur Royal Brass & Blue Pottery Gift Box",
+      "vendorId": "VEND-04",
+      "vendorName": "Rajasthan Souvenirs Hub",
+      "unitRate": 1780,
+      "gstPercent": 12,
+      "qty": 60,
+      "sampleApproved": false,
+      "leadTimeDays": 20,
+      "bufferDays": 3,
+      "status": "Rejected",
+      "notes": "Higher cost and lead time exceeds target delivery buffer."
+    },
+    {
+      "id": "QUOTE-03",
+      "skuId": "SKU-MRC-01",
+      "skuName": "TiE Yugaantar Premium Pique Cotton Polo T-Shirt",
+      "vendorId": "VEND-02",
+      "vendorName": "ThreadCraft Apparel Innovations",
+      "unitRate": 540,
+      "gstPercent": 5,
+      "qty": 350,
+      "sampleApproved": true,
+      "leadTimeDays": 12,
+      "bufferDays": 10,
+      "status": "Selected",
+      "notes": "Pre-shrunk 240 GSM bio-washed fabric sample tested and passed."
+    }
+  ],
+  "distributions": [
+    {
+      "id": "DISP-101",
+      "timestamp": "2026-09-02 09:30 AM",
+      "recipientName": "Dr. Arvind Kejriwal (Keynote Guest)",
+      "recipientCategory": "VIP",
+      "item": "Jodhpur Royal Brass & Blue Pottery Gift Box",
+      "skuId": "SKU-VIP-01",
+      "quantity": 1,
+      "size": "N/A",
+      "issuer": "Vikas Jeerawala",
+      "signature": "Received",
+      "notes": "Delivered to VIP Greenroom Stage 1."
+    },
+    {
+      "id": "DISP-102",
+      "timestamp": "2026-09-02 10:15 AM",
+      "recipientName": "Pooja Sharma (Delegate)",
+      "recipientCategory": "Delegate",
+      "item": "TiE Yugaantar Premium Pique Cotton Polo T-Shirt",
+      "skuId": "SKU-MRC-01",
+      "quantity": 1,
+      "size": "M",
+      "issuer": "Vikas Jeerawala",
+      "signature": "Verified",
+      "notes": "Registration counter #2 dispatch."
+    },
+    {
+      "id": "DISP-103",
+      "timestamp": "2026-09-02 10:45 AM",
+      "recipientName": "Vikram Rathore (Speaker)",
+      "recipientCategory": "Speaker",
+      "item": "Delegate Welcome Kit",
+      "skuId": "SKU-KIT-01",
+      "quantity": 1,
+      "size": "N/A",
+      "issuer": "Vikas Jeerawala",
+      "signature": "Verified",
+      "notes": "Speaker lounge kit handover."
+    }
+  ],
+  "qcInspections": [
+    {
+      "id": "QC-01",
+      "date": "2026-09-01",
+      "skuId": "SKU-VIP-01",
+      "skuName": "Jodhpur Royal Brass & Blue Pottery Gift Box",
+      "totalInspected": 60,
+      "passed": 58,
+      "failed": 2,
+      "defectReason": "Minor glaze crack on blue pottery tile (2 pcs)",
+      "vendorClaimAction": "Vendor Marwar Craft informed; replacement 2 pcs dispatch by Sept 6.",
+      "inspector": "Vikas Jeerawala",
+      "storageBin": "Backstage Storage - Cupboard A1"
+    },
+    {
+      "id": "QC-02",
+      "date": "2026-09-01",
+      "skuId": "SKU-MRC-01",
+      "skuName": "TiE Yugaantar Premium Pique Cotton Polo T-Shirt",
+      "totalInspected": 350,
+      "passed": 346,
+      "failed": 4,
+      "defectReason": "Slight embroidery tension misalignment on sleeve badge (4 pcs Size M)",
+      "vendorClaimAction": "ThreadCraft credited Rs 2,160 on final invoice settlement.",
+      "inspector": "Vikas Jeerawala",
+      "storageBin": "Main Warehouse - Rack M1-M3"
+    }
+  ]
+}
