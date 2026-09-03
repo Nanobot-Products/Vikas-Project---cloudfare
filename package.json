@@ -1,12 +1,5 @@
 {
-  "name": "vikas-project---cloudfare",
+  "name": "vikas-project-cloudflare",
   "version": "3.4.0",
-  "private": true,
-  "description": "Vikas Inventory Suite - Cloudflare Deployment",
-  "scripts": {
-    "deploy": "wrangler deploy"
-  },
-  "devDependencies": {
-    "wrangler": "^3.109.0"
-  }
+  "private": true
 }
