@@ -8,5 +8,6 @@ bun.lock
 wrangler.json
 wrangler.toml
 README.md
+worker.js
 .gitignore
 .assetsignore

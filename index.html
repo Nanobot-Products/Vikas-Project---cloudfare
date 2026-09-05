@@ -91,7 +91,7 @@
             <div class="flex items-center gap-1.5 flex-wrap">
               <h1 class="font-extrabold text-sm sm:text-lg tracking-tight text-white truncate">Dashboard</h1>
               <span class="px-1.5 py-0.5 text-[10px] font-extrabold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap">
-                v3.5 Item Photos & Editor
+                v3.6 Live Cloud KV Sync
               </span>
             </div>
             <p class="text-[11px] text-slate-400 hidden sm:block truncate">Vikas Jeerawala • Procurement & Vendor Suite</p>
@@ -100,6 +100,26 @@
 
         <!-- Action Buttons (Responsive on Mobile) -->
         <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          <!-- Live Cloud Sync Indicator / Manual Sync Button -->
+          <button 
+            id="btn-cloud-sync-status"
+            onclick="manualCloudSync()" 
+            title="Click to Refresh Cloud Data"
+            class="px-2 sm:px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700 flex items-center gap-1.5 text-xs font-bold transition-all">
+            <span id="cloud-sync-dot" class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <span id="cloud-sync-text" class="hidden md:inline">Syncing...</span>
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-slate-400"></i>
+          </button>
+
+          <!-- Download Backup to Google Drive button -->
+          <button 
+            onclick="downloadGoogleDriveBackup()" 
+            title="Download Full Backup (.json) for Google Drive"
+            class="px-2 sm:px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700 flex items-center gap-1 text-xs font-bold transition-all">
+            <i data-lucide="hard-drive-download" class="w-3.5 h-3.5 text-indigo-400"></i>
+            <span class="hidden lg:inline">Backup</span>
+          </button>
+
           <button 
             onclick="openQuickDispatchModal()" 
             class="px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-xs font-bold rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 flex items-center gap-1 sm:gap-1.5 shadow-sm active:scale-95 transition-all">
@@ -794,6 +814,86 @@
     let appState = null;
     let activeCategory = 'all';
 
+    
+    let isCloudSyncing = false;
+    let cloudSyncActive = false;
+
+    async function syncFromCloud() {
+      const dot = document.getElementById('cloud-sync-dot');
+      const txt = document.getElementById('cloud-sync-text');
+      try {
+        const res = await fetch('/api/inventory', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.inventory && Array.isArray(data.inventory)) {
+            appState = data;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+            cloudSyncActive = true;
+            if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+            if (txt) txt.innerText = 'Cloud Synced';
+            return true;
+          }
+        }
+      } catch (err) {
+        console.log('Cloud sync unavailable, using local store:', err);
+      }
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-slate-500';
+      if (txt) txt.innerText = 'Local Mode';
+      return false;
+    }
+
+    async function syncToCloud() {
+      if (!appState) return;
+      const dot = document.getElementById('cloud-sync-dot');
+      const txt = document.getElementById('cloud-sync-text');
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-pulse';
+      if (txt) txt.innerText = 'Saving...';
+      try {
+        const res = await fetch('/api/inventory', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appState)
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success) {
+            cloudSyncActive = true;
+            if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+            if (txt) txt.innerText = 'Cloud Synced';
+            return;
+          }
+        }
+      } catch (err) {
+        console.log('Cloud save error:', err);
+      }
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-slate-500';
+      if (txt) txt.innerText = 'Local Saved';
+    }
+
+    async function manualCloudSync() {
+      showToast('Checking for latest cloud updates...');
+      const updated = await syncFromCloud();
+      if (updated) {
+        renderAll();
+        showToast('Inventory synced with Cloud KV!');
+      } else {
+        await syncToCloud();
+        showToast('Local inventory uploaded to Cloud KV!');
+      }
+    }
+
+    function downloadGoogleDriveBackup() {
+      const dataStr = JSON.stringify(appState, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const dateStr = new Date().toISOString().split('T')[0];
+      a.download = `vikas_inventory_backup_${dateStr}.json`;
+      a.click();
+      showToast('Backup downloaded! Save this file in your Google Drive folder.');
+    }
+
     async function initApp() {
       let saved = localStorage.getItem(STORAGE_KEY);
       if (!saved) {
@@ -809,6 +909,10 @@
       if (saved) {
         try { appState = JSON.parse(saved); } catch(e) {}
       }
+      // Attempt immediate cloud sync from KV
+      syncFromCloud().then(synced => {
+        if (synced) renderAll();
+      });
 
       if (!appState || !appState.inventory || appState.inventory.length === 0) {
         try {
@@ -882,6 +986,7 @@
 
     function saveState() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      syncToCloud();
     }
 
     function showToast(msg) {
