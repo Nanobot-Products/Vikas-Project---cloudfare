@@ -6,5 +6,11 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS"
-  }
+  },
+  "kv_namespaces": [
+    {
+      "binding": "INVENTORY_KV",
+      "id": "339f838fdeb14c6abbc0a908f630536c"
+    }
+  ]
 }

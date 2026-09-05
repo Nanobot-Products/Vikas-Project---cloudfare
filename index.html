@@ -116,9 +116,18 @@
             onclick="downloadGoogleDriveBackup()" 
             title="Download Full Backup (.json) for Google Drive"
             class="px-2 sm:px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700 flex items-center gap-1 text-xs font-bold transition-all">
-            <i data-lucide="hard-drive-download" class="w-3.5 h-3.5 text-indigo-400"></i>
+            <i data-lucide="download" class="w-3.5 h-3.5 text-indigo-400"></i>
             <span class="hidden lg:inline">Backup</span>
           </button>
+
+          <!-- Restore / Import Data from Device -->
+          <label 
+            title="Upload / Restore Backup file (.json) to this device"
+            class="cursor-pointer px-2 sm:px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700 flex items-center gap-1 text-xs font-bold transition-all">
+            <i data-lucide="upload" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span class="hidden lg:inline">Restore</span>
+            <input type="file" accept=".json" class="hidden" onchange="handleRestoreBackup(event)" />
+          </label>
 
           <button 
             onclick="openQuickDispatchModal()" 
@@ -882,6 +891,30 @@
       }
     }
 
+    
+    function handleRestoreBackup(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        try {
+          const importedData = JSON.parse(e.target.result);
+          if (importedData && importedData.inventory && Array.isArray(importedData.inventory)) {
+            appState = importedData;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+            renderAll();
+            showToast('Backup restored successfully on this device!');
+            await syncToCloud();
+          } else {
+            alert('Invalid backup file format.');
+          }
+        } catch (err) {
+          alert('Failed to read backup file: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
     function downloadGoogleDriveBackup() {
       const dataStr = JSON.stringify(appState, null, 2);
       const blob = new Blob([dataStr], { type: 'application/json' });
@@ -911,7 +944,14 @@
       }
       // Attempt immediate cloud sync from KV
       syncFromCloud().then(synced => {
-        if (synced) renderAll();
+        if (synced) {
+          renderAll();
+        } else if (appState && appState.inventory && appState.inventory.length > 0) {
+          // If cloud was empty, automatically upload existing local inventory to Cloud KV!
+          syncToCloud().then(() => {
+            console.log('Seeded local inventory to Cloud KV');
+          });
+        }
       });
 
       if (!appState || !appState.inventory || appState.inventory.length === 0) {
